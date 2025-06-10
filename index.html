@@ -42,6 +42,18 @@ let ComputerChoice =  getComputerChoice();
     }
     return (humanScore, computerScore)
 }
+
+function playGame(){
+ let number = parseInt(prompt("How many times do u wanna play?"));
+ for(i=1; i<=number; i++){
+    console.log(`Round ${i}`);
+    playRound();
+ }
+ if(humanScore>computerScore){console.log("You are the final winner!!")}
+ else if (computerScore){console.log("You lost the game!!")}
+ else{console.log("It is a tie!!")}
+ console.log(`Your score ${humanScore}/${number}`)
+}
     </script>
 </body>
 </html>
