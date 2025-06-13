@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="rock" class="btn" >Rock</button>
+    <button id="paper" class="btn">Paper</button>
+    <button id="scissor" class="btn">Scissor</button>
+    <div id="result"></div>
+    <div id="roundNo"></div>
+    <div id="score"></div>
+
+
+    <script>
+
+        const btns = document.querySelectorAll(".btn");
+        btns.forEach(btn => {
+            btn.addEventListener("click", getHumanChoice);
+        })
+        
+        const div  = document.createElement("div");
+        document.body.appendChild(div);
+
+
+
+
+    let humanScore = 0;
+    let computerScore = 0;
+    let round = 1;
+
+
+function getComputerChoice(){
+  let  options = ["rock", "paper", "scissor"];
+  let i = Math.floor(Math.random()*options.length);
+   return options[i];
+}
+
+function getHumanChoice(event){
+ const humanChoice = event.target.id;
+ playRound(humanChoice);
+}
+
+    roundNo = document.querySelector("#roundNo");
+   let score = document.querySelector("#score");
+
+function playRound(humanChoice){
+    roundNo.textContent = `Round ${round}`
+let ComputerChoice =  getComputerChoice();
+    if ((humanChoice=="paper" && ComputerChoice=="rock") || (humanChoice=="rock" && ComputerChoice=="scissor") || (humanChoice=="scissor" && ComputerChoice=="paper")){
+        humanScore++;
+    div.textContent = `You won! ${humanChoice} beats ${ComputerChoice}`;
+    }
+    else if (humanChoice==ComputerChoice){
+        div.textContent = "Tie!!";
+    }
+    else {
+        computerScore++
+    div.textContent = `You lost! ${ComputerChoice} beats ${humanChoice}`;
+    };
+    score.textContent = `Your Score: ${humanScore}\n\n Computer Score ${computerScore}`;
+    if(humanScore==5 || computerScore==5){
+        endGame();
+    } else {
+        round++;
+    }
+}
+
+let result = document.querySelector("#result");
+function endGame(){
+ if(humanScore>computerScore){
+    result.textContent = "🎉 You are the final winner!!";
+ }
+ else if (computerScore){
+    result.textContent ="😢 You lost the game!!";}
+ else{
+    result.textContent ="🤝It is a tie!!";}
+ `Your score ${humanScore}/${number}`
+}
+    </script>
+</body>
+</html>
