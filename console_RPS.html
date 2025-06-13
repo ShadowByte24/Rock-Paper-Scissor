@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    let humanScore = 0;
+    let computerScore = 0;
+function getComputerChoice(){
+  let  options = ["rock", "paper", "scissor"];
+  let i = Math.floor(Math.random()*options.length);
+   return options[i];
+}
+
+function getHumanChoice(){
+    let ans = prompt("Choose among the following: (\"rock\", \"paper\", \"scissor\")?").toLowerCase();
+    return ans;
+}
+
+
+
+function playRound(){
+    getComputerChoice();
+    getHumanChoice();
+    let humanChoice =  getHumanChoice();
+let ComputerChoice =  getComputerChoice();
+    if ((humanChoice=="paper" && ComputerChoice=="rock") || (humanChoice=="rock" && ComputerChoice=="scissor") || (humanChoice=="scissor" && ComputerChoice=="paper")){
+        humanScore++
+    console.log(`You won! ${humanChoice} beats ${ComputerChoice}`)
+    }
+    else if (humanChoice==ComputerChoice){
+        console.log("Tie!!")
+    }
+    else{
+        computerScore++
+    console.log(`You lost! ${ComputerChoice} beats ${humanChoice}`)
+    }
+    return (humanScore, computerScore)
+}
+
+function playGame(){
+ let number = parseInt(prompt("How many times do u wanna play?"));
+ for(i=1; i<=number; i++){
+    console.log(`Round ${i}`);
+    playRound();
+ }
+ if(humanScore>computerScore){console.log("You are the final winner!!")}
+ else if (computerScore){console.log("You lost the game!!")}
+ else{console.log("It is a tie!!")}
+ console.log(`Your score ${humanScore}/${number}`)
+}
+    </script>
+</body>
+</html>
